@@ -32,7 +32,7 @@ Machine presets are available for 9 nozzle diameters:
 | ABS | Black ABS, White ABS, Color ABS |
 | TPU | Black TPU |
 
-Each filament preset is available for all nozzle sizes.
+Each hard plastic filament preset is available for all nozzle sizes
 
 ## Process Presets
 

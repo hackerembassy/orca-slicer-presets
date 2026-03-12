@@ -1,6 +1,6 @@
 # Orca Slicer Presets
 
-OrcaSlicer presets for **Anette Hackem** — FDM 3D printer at [Hacker Embassy](https://hackerembassy.site/).
+OrcaSlicer presets for **Anette Hackem** — FDM 3D printer at [Hacker Embassy](https://hackem/cc/).
 
 ## Printer
 

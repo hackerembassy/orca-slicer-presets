@@ -1,0 +1,19 @@
+{
+    "from": "User",
+    "inherits": "anette hackem 0.4 nozzle",
+    "is_custom_defined": "0",
+    "machine_end_gcode": "FINISH_PRINT\nM177 Ready!",
+    "machine_start_gcode": "M117 PRINTING\nSTART_PRINT FIRST_LAYER_EXT_TEMP=[nozzle_temperature_initial_layer] FIRST_LAYER_BED_TEMP=[bed_temperature_initial_layer_single]",
+    "max_layer_height": [
+        "0.65"
+    ],
+    "min_layer_height": [
+        "0.15"
+    ],
+    "name": "anette hackem 0.6 nozzle",
+    "nozzle_diameter": [
+        "0.6"
+    ],
+    "printer_settings_id": "anette hackem 0.6 nozzle",
+    "version": "2.3.0.3"
+}

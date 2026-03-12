@@ -1,0 +1,18 @@
+# OrcaSlicer backup
+backup.zip
+
+# Filament drafts/copies (not production presets)
+filament/Generic TPU @System - Copy.*
+filament/Generic TPU matte @annete.*
+
+# Process presets: only validated nozzle sizes are tracked
+# Currently only 0.4 is validated
+# To add a new nozzle size, remove the corresponding exclusion
+# or add negation lines like:
+#   !process/*<size>*
+#   !process/base/*<size>*
+process/*
+!process/base/
+process/base/*
+!process/*0.4*
+!process/base/*0.4*

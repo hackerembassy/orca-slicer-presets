@@ -1,0 +1,17 @@
+{
+    "from": "User",
+    "inherits": "anette hackem 0.4 nozzle",
+    "is_custom_defined": "0",
+    "max_layer_height": [
+        "0.36"
+    ],
+    "min_layer_height": [
+        "0.075"
+    ],
+    "name": "anette hackem 0.3 nozzle",
+    "nozzle_diameter": [
+        "0.3"
+    ],
+    "printer_settings_id": "anette hackem 0.3 nozzle",
+    "version": "2.3.0.3"
+}

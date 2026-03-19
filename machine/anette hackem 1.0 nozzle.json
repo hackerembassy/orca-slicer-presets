@@ -2,6 +2,7 @@
     "from": "User",
     "inherits": "anette hackem 0.4 nozzle",
     "is_custom_defined": "0",
+    "machine_start_gcode": "M117 PRINTING\nSTART_PRINT FIRST_LAYER_EXT_TEMP=[nozzle_temperature_initial_layer] FIRST_LAYER_BED_TEMP=[bed_temperature_initial_layer_single]",
     "max_layer_height": [
         "1.1"
     ],

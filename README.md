@@ -42,17 +42,40 @@ Process presets define print quality profiles (layer height, speed, etc.) for ea
 
 | Nozzle | PLA | PETG | ABS | TPU | Standard |
 | --- | --- | --- | --- | --- | --- |
-| 0.15 mm (Detail) | pending | pending | pending | — | — |
+| 0.15 mm (Detail) | **validated** | pending | pending | — | — |
 | 0.2 mm (Detail) | pending | pending | pending | — | — |
 | 0.25 mm (Detail) | pending | pending | pending | — | — |
-| 0.3 mm (Standard) | pending | pending | pending | — | — |
+| 0.3 mm (Standard) | **validated** | **validated** | pending | — | — |
 | **0.4 mm** | **validated** | **validated** | **validated** | **validated** | **validated** |
 | 0.5 mm (Standard) | pending | pending | pending | — | — |
-| 0.6 mm (Speed) | pending | pending | pending | pending | — |
+| 0.6 mm (Speed) | **validated** | **validated** | **validated** | pending | — |
 | 0.8 mm (Speed) | pending | pending | pending | pending | — |
 | 1.0 mm (Speed) | pending | pending | pending | — | — |
 
 Process presets for non-validated nozzle sizes exist locally but are not yet uploaded. To add a new nozzle size, update `.gitignore` to include the corresponding files.
+
+## Troubleshooting
+
+### SKIP_MESH for ABS prints
+
+When printing ABS, the BL-Touch probe may fail on a heated bed. The `SKIP_MESH` parameter tells the `START_PRINT` macro to skip bed mesh probing and use a previously saved mesh instead.
+
+**Important**: `SKIP_MESH=1` must be on the **same line** as `START_PRINT`, passed as a macro argument. Putting it on a separate line causes a Klipper error.
+
+**Correct** (same line as START_PRINT):
+
+```text
+START_PRINT FIRST_LAYER_EXT_TEMP=... FIRST_LAYER_BED_TEMP=... SKIP_MESH=1
+```
+
+**Incorrect** (separate line — causes Klipper error):
+
+```text
+START_PRINT FIRST_LAYER_EXT_TEMP=... FIRST_LAYER_BED_TEMP=...
+SKIP_MESH=1
+```
+
+Only use `SKIP_MESH=1` when a saved bed mesh already exists for the target bed temperature. Without a saved mesh, the print will start with no bed leveling compensation.
 
 ## Repository Structure
 

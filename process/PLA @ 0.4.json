@@ -15,7 +15,7 @@
     "inner_wall_jerk": "8",
     "inner_wall_line_width": "0.45",
     "inner_wall_speed": "70",
-    "internal_solid_infill_acceleration": "6000",
+    "internal_solid_infill_acceleration": "1100",
     "internal_solid_infill_speed": "80",
     "line_width": "112%",
     "name": "PLA @ 0.4",

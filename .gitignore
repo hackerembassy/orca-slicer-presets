@@ -16,3 +16,9 @@ process/*
 process/base/*
 !process/*0.4*
 !process/base/*0.4*
+!process/*0.15*
+!process/base/*0.15*
+!process/*0.3*
+!process/base/*0.3*
+!process/*0.6*
+!process/base/*0.6*

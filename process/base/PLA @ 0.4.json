@@ -103,7 +103,7 @@
     "internal_bridge_density": "100%",
     "internal_bridge_flow": "1",
     "internal_bridge_speed": "150%",
-    "internal_solid_infill_acceleration": "6000",
+    "internal_solid_infill_acceleration": "1100",
     "internal_solid_infill_line_width": "0",
     "internal_solid_infill_pattern": "monotonic",
     "internal_solid_infill_speed": "80",

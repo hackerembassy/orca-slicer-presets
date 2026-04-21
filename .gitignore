@@ -14,6 +14,16 @@ filament/Generic TPU matte @annete.*
 process/*
 !process/base/
 process/base/*
+# Validated nozzle sizes (explicitly included):
+# - 0.15 mm (Detail) - validated for PLA
+# - 0.3 mm (Standard) - validated for PLA, PETG
+# - 0.4 mm (Standard) - fully validated for all materials
+# - 0.6 mm (Speed) - validated for PLA, PETG, ABS
+#
+# Excluded nozzle sizes (pending validation):
+# - 0.2 mm, 0.25 mm (Detail) - pending validation
+# - 0.5 mm (Standard) - pending validation
+# - 0.8 mm, 1.0 mm (Speed) - pending validation
 !process/*0.4*
 !process/base/*0.4*
 !process/*0.15*

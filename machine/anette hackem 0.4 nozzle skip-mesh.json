@@ -1,0 +1,9 @@
+{
+    "from": "User",
+    "inherits": "anette hackem 0.4 nozzle",
+    "is_custom_defined": "0",
+    "machine_start_gcode": "M117 PRINTING\nSTART_PRINT FIRST_LAYER_EXT_TEMP=[nozzle_temperature_initial_layer] FIRST_LAYER_BED_TEMP=[bed_temperature_initial_layer_single] SKIP_MESH=1",
+    "name": "anette hackem 0.4 nozzle skip-mesh",
+    "printer_settings_id": "anette hackem 0.4 nozzle skip-mesh",
+    "version": "2.3.0.3"
+}

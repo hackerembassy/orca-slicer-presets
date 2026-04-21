@@ -1,4 +1,7 @@
 {
+    "compatible_printers": [
+        "anette hackem 0.6 nozzle"
+    ],
     "bottom_shell_layers": "3",
     "bottom_shell_thickness": "0.9",
     "bridge_acceleration": "400",

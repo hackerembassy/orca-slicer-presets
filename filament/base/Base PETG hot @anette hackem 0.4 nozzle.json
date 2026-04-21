@@ -30,7 +30,10 @@
         "anette hackem 0.4 nozzle"
     ],
     "compatible_printers_condition": "",
-    "compatible_prints": [],
+    "compatible_prints": [
+        "PETG @ 0.4",
+        "Standard @ 0.4"
+    ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [
         "70"

@@ -30,7 +30,10 @@
         "anette hackem 0.4 nozzle"
     ],
     "compatible_printers_condition": "",
-    "compatible_prints": [],
+    "compatible_prints": [
+        "PETG @ 0.4",
+        "Standard @ 0.4"
+    ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [
         "70"
@@ -96,7 +99,7 @@
         "; filament end gcode\n"
     ],
     "filament_flow_ratio": [
-        "1.03"
+        "1.01"
     ],
     "filament_id": "Pbeb5fca",
     "filament_is_support": [
@@ -166,7 +169,7 @@
         "Black PETG hot @anette hackem 0.4 nozzle"
     ],
     "filament_shrink": [
-        "100.2%"
+        "100.1%"
     ],
     "filament_shrinkage_compensation_z": [
         "100%"

@@ -30,7 +30,9 @@
         "anette hackem 0.8 nozzle"
     ],
     "compatible_printers_condition": "",
-    "compatible_prints": [],
+    "compatible_prints": [
+        "Speed ABS @ 0.8"
+    ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [
         "70"

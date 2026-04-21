@@ -30,7 +30,9 @@
         "anette hackem 0.6 nozzle"
     ],
     "compatible_printers_condition": "",
-    "compatible_prints": [],
+    "compatible_prints": [
+        "Speed PETG @ 0.6"
+    ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [
         "70"
@@ -154,7 +156,7 @@
         "nil"
     ],
     "filament_retraction_length": [
-        "1.2"
+        "1.0"
     ],
     "filament_retraction_minimum_travel": [
         "nil"

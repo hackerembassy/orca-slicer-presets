@@ -20,7 +20,9 @@
     "brim_type": "auto_brim",
     "brim_width": "0",
     "calib_flowrate_topinfill_special_order": "0",
-    "compatible_printers": [],
+    "compatible_printers": [
+        "anette hackem 0.15 nozzle"
+    ],
     "compatible_printers_condition": "",
     "counterbore_hole_bridging": "none",
     "default_acceleration": "800",

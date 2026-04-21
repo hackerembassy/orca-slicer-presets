@@ -30,7 +30,10 @@
         "anette hackem 0.4 nozzle"
     ],
     "compatible_printers_condition": "",
-    "compatible_prints": [],
+    "compatible_prints": [
+        "PETG @ 0.4",
+        "Standard @ 0.4"
+    ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [
         "70"
@@ -96,7 +99,7 @@
         "; filament end gcode\n"
     ],
     "filament_flow_ratio": [
-        "1.04"
+        "1.03"
     ],
     "filament_id": "Pa2cd27e",
     "filament_is_support": [
@@ -233,10 +236,10 @@
     "is_custom_defined": "0",
     "name": "White PETG hot @anette hackem 0.4 nozzle",
     "nozzle_temperature": [
-        "237"
+        "240"
     ],
     "nozzle_temperature_initial_layer": [
-        "245"
+        "246"
     ],
     "nozzle_temperature_range_high": [
         "245"

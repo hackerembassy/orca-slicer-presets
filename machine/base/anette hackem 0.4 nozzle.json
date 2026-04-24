@@ -150,7 +150,7 @@
     "parking_pos_retraction": "92",
     "pellet_modded_printer": "0",
     "preferred_orientation": "0",
-    "print_host": "10.13.37.125",
+    "print_host": "printer-anette.lan",
     "print_host_webui": "",
     "printable_area": [
         "0x0",

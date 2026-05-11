@@ -1,0 +1,16 @@
+{
+    "filament_settings_id": [
+        "All PLA hot 3 @anette hackem 0.4 nozzle"
+    ],
+    "from": "User",
+    "inherits": "All PLA hot @anette hackem 0.4 nozzle",
+    "is_custom_defined": "0",
+    "name": "All PLA hot 3 @anette hackem 0.4 nozzle",
+    "nozzle_temperature": [
+        "214"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "219"
+    ],
+    "version": "2.3.1.10"
+}

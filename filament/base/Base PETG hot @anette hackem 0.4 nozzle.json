@@ -99,7 +99,7 @@
         "; filament end gcode\n"
     ],
     "filament_flow_ratio": [
-        "1.03"
+        "1.05"
     ],
     "filament_id": "P95b0ff4",
     "filament_is_support": [
@@ -157,7 +157,7 @@
         "nil"
     ],
     "filament_retraction_length": [
-        "1.2"
+        "0.8"
     ],
     "filament_retraction_minimum_travel": [
         "nil"
@@ -293,10 +293,10 @@
         "40"
     ],
     "textured_plate_temp": [
-        "80"
+        "70"
     ],
     "textured_plate_temp_initial_layer": [
-        "80"
+        "70"
     ],
     "version": "2.3.1.10"
 }

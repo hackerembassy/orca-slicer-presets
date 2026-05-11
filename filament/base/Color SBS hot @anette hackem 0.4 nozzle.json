@@ -31,7 +31,7 @@
     ],
     "compatible_printers_condition": "",
     "compatible_prints": [
-        "PETG @ 0.4",
+        "SBS @ 0.4",
         "Standard @ 0.4"
     ],
     "compatible_prints_condition": "",
@@ -45,7 +45,7 @@
         "60"
     ],
     "default_filament_colour": [
-        "#000000"
+        "#1C71D8"
     ],
     "dont_slow_down_outer_wall": [
         "0"
@@ -69,7 +69,7 @@
         "12"
     ],
     "fan_max_speed": [
-        "40"
+        "50"
     ],
     "fan_min_speed": [
         "20"
@@ -87,10 +87,10 @@
         "7000"
     ],
     "filament_density": [
-        "1.27"
+        "1.01"
     ],
     "filament_deretraction_speed": [
-        "40"
+        "30"
     ],
     "filament_diameter": [
         "1.75"
@@ -99,9 +99,9 @@
         "; filament end gcode\n"
     ],
     "filament_flow_ratio": [
-        "1.01"
+        "0.98"
     ],
-    "filament_id": "Pbeb5fca",
+    "filament_id": "Psbs0040",
     "filament_is_support": [
         "0"
     ],
@@ -115,7 +115,7 @@
         "nil"
     ],
     "filament_max_volumetric_speed": [
-        "9"
+        "10"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -157,7 +157,7 @@
         "nil"
     ],
     "filament_retraction_length": [
-        "1.2"
+        "0.8"
     ],
     "filament_retraction_minimum_travel": [
         "nil"
@@ -166,10 +166,10 @@
         "40"
     ],
     "filament_settings_id": [
-        "Black PETG hot @anette hackem 0.4 nozzle"
+        "Color SBS hot @anette hackem 0.4 nozzle"
     ],
     "filament_shrink": [
-        "100.1%"
+        "100.3%"
     ],
     "filament_shrinkage_compensation_z": [
         "100%"
@@ -190,7 +190,7 @@
         "0"
     ],
     "filament_type": [
-        "PETG"
+        "SBS"
     ],
     "filament_unloading_speed": [
         "90"
@@ -199,13 +199,13 @@
         "100"
     ],
     "filament_vendor": [
-        "Black"
+        "SBS"
     ],
     "filament_wipe": [
-        "nil"
+        "1"
     ],
     "filament_wipe_distance": [
-        "nil"
+        "1.5"
     ],
     "filament_z_hop": [
         "0.2"
@@ -215,13 +215,13 @@
     ],
     "from": "User",
     "full_fan_speed_layer": [
-        "0"
+        "4"
     ],
     "hot_plate_temp": [
-        "80"
+        "75"
     ],
     "hot_plate_temp_initial_layer": [
-        "85"
+        "80"
     ],
     "idle_temperature": [
         "0"
@@ -234,12 +234,12 @@
         "-1"
     ],
     "is_custom_defined": "0",
-    "name": "Black PETG hot @anette hackem 0.4 nozzle",
+    "name": "Color SBS hot @anette hackem 0.4 nozzle",
     "nozzle_temperature": [
-        "229"
+        "230"
     ],
     "nozzle_temperature_initial_layer": [
-        "237"
+        "235"
     ],
     "nozzle_temperature_range_high": [
         "245"
@@ -248,10 +248,10 @@
         "220"
     ],
     "overhang_fan_speed": [
-        "70"
+        "80"
     ],
     "overhang_fan_threshold": [
-        "95%"
+        "50%"
     ],
     "pellet_flow_coefficient": [
         "0.4157"

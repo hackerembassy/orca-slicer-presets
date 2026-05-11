@@ -126,7 +126,7 @@
         "0",
         "0"
     ],
-    "machine_pause_gcode": "M600",
+    "machine_pause_gcode": "PAUSE",
     "machine_start_gcode": "M117 PRINTING\nSTART_PRINT FIRST_LAYER_EXT_TEMP=[nozzle_temperature_initial_layer] FIRST_LAYER_BED_TEMP=[bed_temperature_initial_layer_single]",
     "machine_tool_change_time": "0",
     "machine_unload_filament_time": "0",

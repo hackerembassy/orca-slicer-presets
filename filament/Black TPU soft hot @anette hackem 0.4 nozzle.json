@@ -1,0 +1,32 @@
+{
+    "compatible_prints": [],
+    "fan_max_speed": [
+        "45"
+    ],
+    "fan_min_speed": [
+        "10"
+    ],
+    "filament_flow_ratio": [
+        "0.95"
+    ],
+    "filament_settings_id": [
+        "Black TPU soft hot @anette hackem 0.4 nozzle"
+    ],
+    "from": "User",
+    "inherits": "Black TPU hot @anette hackem 0.4 nozzle",
+    "is_custom_defined": "0",
+    "name": "Black TPU soft hot @anette hackem 0.4 nozzle",
+    "nozzle_temperature": [
+        "212"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "217"
+    ],
+    "textured_plate_temp": [
+        "55"
+    ],
+    "textured_plate_temp_initial_layer": [
+        "60"
+    ],
+    "version": "2.3.1.10"
+}

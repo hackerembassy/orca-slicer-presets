@@ -1,6 +1,6 @@
 # Orca Slicer Presets
 
-OrcaSlicer presets for **Anette Hackem** — FDM 3D printer at [Hacker Embassy](https://hackerembassy.site/).
+OrcaSlicer presets for **Anette Hackem** — FDM 3D printer at [Hacker Embassy](https://hackem.cc/).
 
 ## Printer
 
@@ -32,7 +32,7 @@ Machine presets are available for 9 nozzle diameters:
 | ABS | Black ABS, White ABS, Color ABS |
 | TPU | Black TPU |
 
-Each filament preset is available for all nozzle sizes.
+Each hard plastic filament preset is available for all nozzle sizes
 
 ## Process Presets
 

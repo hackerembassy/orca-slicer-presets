@@ -124,13 +124,16 @@ def process_filament_file(json_path, process_map):
     print(f"  CREATED: {shaytan_filename}")
 
     # --- Update original: strip all Shaytan refs ---
-    data["compatible_printers"] = [
-        x for x in data.get("compatible_printers", [])
-        if "Shaytan" not in x and "Creality K2" not in x
-    ]
-    data["compatible_prints"] = [
-        x for x in data.get("compatible_prints", []) if "Shaytan" not in x
-    ]
+    # Only modify if the field was already present — absent means "inherit from parent"
+    if "compatible_printers" in data:
+        data["compatible_printers"] = [
+            x for x in data["compatible_printers"]
+            if "Shaytan" not in x and "Creality K2" not in x
+        ]
+    if "compatible_prints" in data:
+        data["compatible_prints"] = [
+            x for x in data["compatible_prints"] if "Shaytan" not in x
+        ]
     write_json(json_path, data)
     print(f"  UPDATED: {filename}")
 

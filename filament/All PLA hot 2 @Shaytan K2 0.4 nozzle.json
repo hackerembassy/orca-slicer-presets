@@ -1,0 +1,15 @@
+{
+	"compatible_printers": [
+		"Shaytan K2 @ 0.4"
+	],
+	"compatible_prints": [],
+	"filament_id": "Z249b0bb",
+	"filament_settings_id": [
+		"All PLA hot 2 @Shaytan K2 0.4 nozzle"
+	],
+	"from": "User",
+	"inherits": "All PLA hot @Shaytan K2 0.4 nozzle",
+	"is_custom_defined": "0",
+	"name": "All PLA hot 2 @Shaytan K2 0.4 nozzle",
+	"version": "2.3.1.10"
+}

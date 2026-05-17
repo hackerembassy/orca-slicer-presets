@@ -27,11 +27,13 @@
         "5"
     ],
     "compatible_printers": [
-        "anette hackem 1.0 nozzle"
+        "anette hackem 1.0 nozzle",
+        "Shaytan K2 @ 1.0"
     ],
     "compatible_printers_condition": "",
     "compatible_prints": [
-        "Speed ABS @ 1.0"
+        "Speed ABS @ 1.0",
+        "Shaytan K2 Speed ABS @ 1.0"
     ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [

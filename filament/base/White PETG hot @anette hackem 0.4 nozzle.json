@@ -27,12 +27,15 @@
         "3"
     ],
     "compatible_printers": [
-        "anette hackem 0.4 nozzle"
+        "anette hackem 0.4 nozzle",
+        "Shaytan K2 @ 0.4"
     ],
     "compatible_printers_condition": "",
     "compatible_prints": [
         "PETG @ 0.4",
-        "Standard @ 0.4"
+        "Standard @ 0.4",
+        "Shaytan K2 PETG @ 0.4",
+        "Shaytan K2 Standard @ 0.4"
     ],
     "compatible_prints_condition": "",
     "complete_print_exhaust_fan_speed": [

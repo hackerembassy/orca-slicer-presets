@@ -1,0 +1,22 @@
+{
+	"from": "User",
+	"inherits": "Creality K2",
+	"max_layer_height": [
+		"0.16"
+	],
+	"min_layer_height": [
+		"0.05"
+	],
+	"name": "Shaytan K2 @ 0.2",
+	"nozzle_diameter": [
+		"0.2"
+	],
+	"printer_extruder_id": [
+		"1"
+	],
+	"printer_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"printer_settings_id": "Shaytan K2 @ 0.2",
+	"version": "2.3.2.50"
+}

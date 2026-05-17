@@ -1,17 +1,17 @@
 # Orca Slicer Presets
 
 OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.cc/):
-**Anette Hackem** and **Shaytan** (Creality K2 Pro).
+**Anette** and **Shaytan** (Creality K2 Pro).
 
 ---
 
 ## Printers
 
-### Anette Hackem
+### Anette
 
 | Field | Value |
 | --- | --- |
-| **Name** | Anette Hackem |
+| **Name** | Anette |
 | **Type** | FDM — i3 cartesian |
 | **Build volume** | 220 × 220 × 170 mm |
 | **Firmware** | Klipper |
@@ -76,7 +76,7 @@ Each preset is available for every nozzle size where a matching process profile 
 
 Process presets define print quality profiles (layer height, speeds, supports, etc.) for each printer and nozzle size.
 
-### Anette Hackem — Validation Status
+### Anette — Validation Status
 
 | Nozzle | PLA | PETG | ABS | TPU | Standard |
 | --- | --- | --- | --- | --- | --- |
@@ -148,7 +148,7 @@ After copying, restart OrcaSlicer — presets will appear in the printer, proces
 
 ## Troubleshooting
 
-> Troubleshooting notes below are specific to **Anette Hackem**.
+> Troubleshooting notes below are specific to **Anette**.
 
 ### SKIP\_MESH for ABS prints
 

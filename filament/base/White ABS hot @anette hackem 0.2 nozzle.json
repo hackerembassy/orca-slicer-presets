@@ -27,12 +27,10 @@
         "5"
     ],
     "compatible_printers": [
-        "anette hackem 0.2 nozzle",
         "Shaytan K2 @ 0.2"
     ],
     "compatible_printers_condition": "",
     "compatible_prints": [
-        "Detail ABS @ 0.2",
         "Shaytan K2 Detail ABS @ 0.2"
     ],
     "compatible_prints_condition": "",

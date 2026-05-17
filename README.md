@@ -1,10 +1,10 @@
 # Orca Slicer Presets
 
-OrcaSlicer presets for **Anette Hackem** — FDM 3D printer at [Hacker Embassy](https://hackem.cc/).
+OrcaSlicer presets for **Anette** — FDM 3D printer at [Hacker Embassy](https://hackem.cc/).
 
 ## Printer
 
-- **Name**: Anette Hackem
+- **Name**: Anette 
 - **Type**: FDM (Fused Deposition Modeling)
 - **Firmware**: Klipper
 - **Slicer**: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)

@@ -1,7 +1,7 @@
 # Orca Slicer Presets
 
 OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.cc/):
-**Anette** and **Shaytan** (Creality K2 Pro).
+**Anette** and **Shaytan** (Creality K2).
 
 ---
 
@@ -34,12 +34,12 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 
 ---
 
-### Shaytan (Creality K2 Pro)
+### Shaytan (Creality K2)
 
 | Field | Value |
 | --- | --- |
 | **Name** | Shaytan |
-| **Model** | Creality K2 Pro |
+| **Model** | Creality K2 |
 | **Type** | FDM — CoreXY |
 | **Build volume** | 260 × 260 × 260 mm |
 | **Firmware** | Klipper |

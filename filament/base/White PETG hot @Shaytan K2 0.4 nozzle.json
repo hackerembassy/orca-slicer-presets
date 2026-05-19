@@ -2,6 +2,12 @@
 	"activate_air_filtration": [
 		"0"
 	],
+	"activate_air_filtration_during_print": [
+		"1"
+	],
+	"activate_air_filtration_on_completion": [
+		"1"
+	],
 	"activate_chamber_temp_control": [
 		"0"
 	],
@@ -74,6 +80,18 @@
 	"fan_min_speed": [
 		"20"
 	],
+	"filament_adaptive_volumetric_speed": [
+		"0"
+	],
+	"filament_adhesiveness_category": [
+		"0"
+	],
+	"filament_change_extrusion_role_gcode": [
+		""
+	],
+	"filament_change_length": [
+		"10"
+	],
 	"filament_cooling_final_speed": [
 		"3.4"
 	],
@@ -98,10 +116,31 @@
 	"filament_end_gcode": [
 		"; filament end gcode\n"
 	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
 	"filament_flow_ratio": [
-		"1.03"
+		"0.99"
+	],
+	"filament_flush_temp": [
+		"0"
+	],
+	"filament_flush_volumetric_speed": [
+		"0"
 	],
 	"filament_id": "S156ca4b",
+	"filament_ironing_flow": [
+		"nil"
+	],
+	"filament_ironing_inset": [
+		"nil"
+	],
+	"filament_ironing_spacing": [
+		"nil"
+	],
+	"filament_ironing_speed": [
+		"nil"
+	],
 	"filament_is_support": [
 		"0"
 	],
@@ -132,6 +171,9 @@
 	"filament_notes": [
 		""
 	],
+	"filament_printable": [
+		"3"
+	],
 	"filament_ramming_parameters": [
 		"120 100 6.6 6.8 7.2 7.6 7.9 8.2 8.7 9.4 9.9 10.0| 0.05 6.6 0.45 6.8 0.95 7.8 1.45 8.3 1.95 9.7 2.45 10 2.95 7.6 3.45 7.6 3.95 7.6 4.45 7.6 4.95 7.6"
 	],
@@ -151,13 +193,13 @@
 		"nil"
 	],
 	"filament_retract_when_changing_layer": [
-		"nil"
+		"0"
 	],
 	"filament_retraction_distances_when_cut": [
 		"nil"
 	],
 	"filament_retraction_length": [
-		"1.2"
+		"0.4"
 	],
 	"filament_retraction_minimum_travel": [
 		"nil"
@@ -189,6 +231,21 @@
 	"filament_toolchange_delay": [
 		"0"
 	],
+	"filament_tower_interface_pre_extrusion_dist": [
+		"10"
+	],
+	"filament_tower_interface_pre_extrusion_length": [
+		"0"
+	],
+	"filament_tower_interface_print_temp": [
+		"-1"
+	],
+	"filament_tower_interface_purge_volume": [
+		"20"
+	],
+	"filament_tower_ironing_area": [
+		"4"
+	],
 	"filament_type": [
 		"PETG"
 	],
@@ -202,7 +259,7 @@
 		"White"
 	],
 	"filament_wipe": [
-		"nil"
+		"0"
 	],
 	"filament_wipe_distance": [
 		"nil"
@@ -233,7 +290,9 @@
 	"ironing_fan_speed": [
 		"-1"
 	],
-	"is_custom_defined": "0",
+	"long_retractions_when_ec": [
+		"0"
+	],
 	"name": "White PETG hot @Shaytan K2 0.4 nozzle",
 	"nozzle_temperature": [
 		"240"
@@ -257,13 +316,16 @@
 		"0.4157"
 	],
 	"pressure_advance": [
-		"0.04"
+		"0.07"
 	],
 	"reduce_fan_stop_start_freq": [
 		"1"
 	],
 	"required_nozzle_HRC": [
 		"3"
+	],
+	"retraction_distances_when_ec": [
+		"10"
 	],
 	"slow_down_for_layer_cooling": [
 		"1"
@@ -298,5 +360,8 @@
 	"textured_plate_temp_initial_layer": [
 		"80"
 	],
-	"version": "2.3.1.10"
+	"version": "2.3.1.10",
+	"volumetric_speed_coefficients": [
+		""
+	]
 }

@@ -1,0 +1,24 @@
+{
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_settings_id": [
+		"Marble PETG hot @Shaytan K2 0.4 nozzle"
+	],
+	"filament_shrink": [
+		"100.2%"
+	],
+	"filament_vendor": [
+		"Marble"
+	],
+	"from": "User",
+	"inherits": "White PETG hot @Shaytan K2 0.4 nozzle",
+	"name": "Marble PETG hot @Shaytan K2 0.4 nozzle",
+	"nozzle_temperature": [
+		"247"
+	],
+	"nozzle_temperature_initial_layer": [
+		"252"
+	],
+	"version": "2.3.1.10"
+}

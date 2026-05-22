@@ -120,7 +120,7 @@
 		"Direct Drive Standard"
 	],
 	"filament_flow_ratio": [
-		"1"
+		"0.955"
 	],
 	"filament_flush_temp": [
 		"0"
@@ -154,7 +154,7 @@
 		"nil"
 	],
 	"filament_max_volumetric_speed": [
-		"20"
+		"21"
 	],
 	"filament_minimal_purge_on_wipe_tower": [
 		"15"
@@ -199,7 +199,7 @@
 		"nil"
 	],
 	"filament_retraction_length": [
-		"0.8"
+		"0.3"
 	],
 	"filament_retraction_minimum_travel": [
 		"nil"
@@ -211,7 +211,7 @@
 		"White ABS hot @Shaytan K2 0.4 nozzle"
 	],
 	"filament_shrink": [
-		"100%"
+		"100.25%"
 	],
 	"filament_shrinkage_compensation_z": [
 		"100%"
@@ -316,7 +316,7 @@
 		"0.4157"
 	],
 	"pressure_advance": [
-		"0.03"
+		"0.04"
 	],
 	"reduce_fan_stop_start_freq": [
 		"0"

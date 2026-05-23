@@ -30,7 +30,7 @@
 		"40"
 	],
 	"close_fan_the_first_x_layers": [
-		"0"
+		"5"
 	],
 	"compatible_printers": [
 		"Shaytan K2 @ 0.4"
@@ -72,13 +72,13 @@
 		"105"
 	],
 	"fan_cooling_layer_time": [
-		"10"
+		"30"
 	],
 	"fan_max_speed": [
-		"15"
+		"20"
 	],
 	"fan_min_speed": [
-		"0"
+		"10"
 	],
 	"filament_adaptive_volumetric_speed": [
 		"0"
@@ -295,10 +295,10 @@
 	],
 	"name": "White ABS hot @Shaytan K2 0.4 nozzle",
 	"nozzle_temperature": [
-		"250"
+		"260"
 	],
 	"nozzle_temperature_initial_layer": [
-		"255"
+		"260"
 	],
 	"nozzle_temperature_range_high": [
 		"255"
@@ -319,7 +319,7 @@
 		"0.04"
 	],
 	"reduce_fan_stop_start_freq": [
-		"0"
+		"1"
 	],
 	"required_nozzle_HRC": [
 		"3"
@@ -331,7 +331,7 @@
 		"1"
 	],
 	"slow_down_layer_time": [
-		"15"
+		"3"
 	],
 	"slow_down_min_speed": [
 		"10"

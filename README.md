@@ -28,7 +28,6 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 | anette hackem 0.6 nozzle | 0.6 mm | Speed |
 | anette hackem 0.6 nozzle skip-mesh | 0.6 mm | Speed — skips bed mesh |
 | anette hackem 0.8 nozzle | 0.8 mm | Speed |
-| anette hackem 1.0 nozzle | 1.0 mm | Speed |
 
 > **Note:** 0.2 mm and 0.5 mm nozzles are MK8 format and are not compatible with this printer.
 
@@ -85,7 +84,6 @@ Process presets define print quality profiles (layer height, speeds, supports, e
 | **0.4 mm** | **validated** | **validated** | **validated** | **validated** | **validated** |
 | 0.6 mm (Speed) | **validated** | **validated** | **validated** | pending | — |
 | 0.8 mm (Speed) | pending | pending | pending | pending | — |
-| 1.0 mm (Speed) | pending | pending | pending | — | — |
 
 ### Shaytan K2 — Validation Status
 

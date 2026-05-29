@@ -1,0 +1,33 @@
+{
+	"default_filament_colour": [
+		"#21FFFF"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_flow_ratio": [
+		"0.98"
+	],
+	"filament_max_volumetric_speed": [
+		"30"
+	],
+	"filament_retraction_length": [
+		"2.2"
+	],
+	"filament_settings_id": [
+		"Hi-Speed PETG hot @Shaytan K2 0.4 nozzle"
+	],
+	"from": "User",
+	"inherits": "Base PETG hot @Shaytan K2 0.4 nozzle",
+	"name": "Hi-Speed PETG hot @Shaytan K2 0.4 nozzle",
+	"nozzle_temperature": [
+		"260"
+	],
+	"nozzle_temperature_initial_layer": [
+		"260"
+	],
+	"pressure_advance": [
+		"0.045"
+	],
+	"version": "2.3.1.10"
+}

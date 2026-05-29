@@ -52,7 +52,6 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 | Shaytan K2 @ 0.4 | **0.4 mm** | Standard — default |
 | Shaytan K2 @ 0.6 | 0.6 mm | Speed |
 | Shaytan K2 @ 0.8 | 0.8 mm | Speed |
-| Shaytan K2 @ 1.0 | 1.0 mm | Speed |
 
 ---
 
@@ -90,15 +89,14 @@ Process presets define print quality profiles (layer height, speeds, supports, e
 
 ### Shaytan K2 — Validation Status
 
-All K2 process presets are **baseline** — structural parameters (layer heights, support distances, wall counts) are derived from Anette's validated profiles. Print speeds have not yet been tuned for the K2 and will need manual adjustment after test prints.
+0.4 mm profiles have been tested and validated. Remaining nozzle sizes are **baseline** — structural parameters (layer heights, support distances, wall counts) derived from Anette's validated profiles. Speeds for 0.2, 0.6, 0.8 mm have not been tuned and will need adjustment after test prints.
 
 | Nozzle | PLA | PETG | ABS | TPU | SBS | Standard |
 | --- | --- | --- | --- | --- | --- | --- |
 | 0.2 mm (Detail) | baseline | baseline | baseline | — | — | — |
-| **0.4 mm** | baseline | baseline | baseline | baseline | baseline | baseline |
+| **0.4 mm** | **validated** | **validated** | **validated** | baseline | baseline | baseline |
 | 0.6 mm (Speed) | baseline | baseline | baseline | baseline | — | — |
 | 0.8 mm (Speed) | baseline | baseline | baseline | baseline | — | — |
-| 1.0 mm (Speed) | baseline | baseline | baseline | — | — | — |
 
 ---
 

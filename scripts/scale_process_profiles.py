@@ -132,12 +132,18 @@ def get_validated_mvf(printer, material):
 # ---------------------------------------------------------------------------
 # Speed calculation
 # ---------------------------------------------------------------------------
-def scale_speed(ref_speed, tgt_layer, tgt_width, max_vf, floor=1):
+def scale_speed(ref_speed, ref_layer, ref_width, tgt_layer, tgt_width, filament_mvf, floor=1):
     """
-    Return integer speed (mm/s): min(ref_speed, max_vf / (tgt_layer * tgt_width)).
-    Floors the result at `floor`.
+    effective_mvf = max(ref_speed * ref_layer * ref_width, filament_mvf)
+    target_speed  = min(ref_speed, effective_mvf / (tgt_layer * tgt_width))
+
+    Never cap below what the validated 0.4 process already achieves.
+    Filament MVF serves as a higher-flow ceiling where the rating exceeds
+    the validated process (e.g. larger nozzle allows more flow).
     """
-    cap = max_vf / (tgt_layer * tgt_width)
+    process_flow  = ref_speed * ref_layer * ref_width
+    effective_mvf = max(process_flow, filament_mvf)
+    cap           = effective_mvf / (tgt_layer * tgt_width)
     return max(floor, round(min(ref_speed, cap)))
 
 # ---------------------------------------------------------------------------
@@ -191,23 +197,22 @@ def build_updates(printer, material, nozzle):
     mvf = get_validated_mvf(printer, material)
 
     lh  = layer_h(nozzle)
+    rw  = ref["wid"]          # reference wall width at 0.4 nozzle
     wid = std_width(nozzle, ref["lw_pct"])
     sw  = sup_width(nozzle, ref["sup_wid"] / 0.4)
 
-    # Infill width
-    if "inf_wid" in ref:
-        inf_w = round(nozzle * (ref["inf_wid"] / 0.4), 4)
-    else:
-        inf_w = sw
+    # Infill width at target nozzle
+    inf_ref_w = ref.get("inf_wid", rw)
+    inf_w = round(nozzle * (inf_ref_w / 0.4), 4)
 
     def sp(ref_spd, w=None):
-        return scale_speed(ref_spd, lh, w or wid, mvf)
+        return scale_speed(ref_spd, REF_LAYER, rw, lh, w or wid, mvf)
 
     def sp_inf(ref_spd):
-        return scale_speed(ref_spd, lh, inf_w, mvf)
+        return scale_speed(ref_spd, REF_LAYER, inf_ref_w, lh, inf_w, mvf)
 
     def sp_sup(ref_spd):
-        return scale_speed(ref_spd, lh, sw, mvf)
+        return scale_speed(ref_spd, REF_LAYER, ref["sup_wid"], lh, sw, mvf)
 
     # TPU: floor at validated 0.4 speeds (material-property-driven limit)
     is_tpu   = material == "TPU"
@@ -306,15 +311,17 @@ def print_table():
         mvf  = get_validated_mvf(printer, material)
         lh   = layer_h(nozzle)
         wid  = std_width(nozzle, ref["lw_pct"])
-        ow   = scale_speed(ref["ow"],  lh, wid, mvf)
-        iw   = scale_speed(ref["iw"],  lh, wid, mvf)
+        ow   = scale_speed(ref["ow"],  REF_LAYER, ref["wid"], lh, wid, mvf)
+        iw   = scale_speed(ref["iw"],  REF_LAYER, ref["wid"], lh, wid, mvf)
         sw   = sup_width(nozzle, ref["sup_wid"] / 0.4)
-        inf_w = round(nozzle * (ref.get("inf_wid", ref["wid"]) / 0.4), 4)
-        inf  = scale_speed(ref["inf"], lh, inf_w, mvf)
-        top  = scale_speed(ref["top"], lh, wid, mvf)
+        inf_ref_w = ref.get("inf_wid", ref["wid"])
+        inf_w = round(nozzle * (inf_ref_w / 0.4), 4)
+        inf  = scale_speed(ref["inf"], REF_LAYER, inf_ref_w, lh, inf_w, mvf)
+        top  = scale_speed(ref["top"], REF_LAYER, ref["wid"], lh, wid, mvf)
         il_f = ref["il"] if material == "TPU" else (10 if printer == "anette" else 40)
-        il   = max(il_f, scale_speed(ref["il"], lh, wid, mvf))
-        cap  = round(mvf / (lh * wid))
+        il   = max(il_f, scale_speed(ref["il"], REF_LAYER, ref["wid"], lh, wid, mvf))
+        eff  = max(ref["iw"] * REF_LAYER * ref["wid"], mvf)
+        cap  = round(eff / (lh * wid))
         print(
             f"  {filename:<44} {nozzle:>4.2f} {lh:>5.2f} {mvf:>5.1f} "
             f"{ow:>5} {iw:>5} {inf:>5} {top:>5} {il:>5}  cap={cap}"

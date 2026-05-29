@@ -28,7 +28,6 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 | anette hackem 0.6 nozzle | 0.6 mm | Speed |
 | anette hackem 0.6 nozzle skip-mesh | 0.6 mm | Speed — skips bed mesh |
 | anette hackem 0.8 nozzle | 0.8 mm | Speed |
-| anette hackem 1.0 nozzle | 1.0 mm | Speed |
 
 > **Note:** 0.2 mm and 0.5 mm nozzles are MK8 format and are not compatible with this printer.
 
@@ -52,7 +51,6 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 | Shaytan K2 @ 0.4 | **0.4 mm** | Standard — default |
 | Shaytan K2 @ 0.6 | 0.6 mm | Speed |
 | Shaytan K2 @ 0.8 | 0.8 mm | Speed |
-| Shaytan K2 @ 1.0 | 1.0 mm | Speed |
 
 ---
 
@@ -60,13 +58,14 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 
 Filament presets are shared across both printers for nozzle sizes they have in common.
 
-| Material | Variants |
-| --- | --- |
-| PLA | All PLA hot |
-| PETG | Base PETG hot, Black PETG hot, White PETG hot |
-| ABS | Black ABS hot, White ABS hot, Color ABS hot |
-| TPU | Black TPU hot |
-| SBS | Color SBS hot |
+| Material | Variants | Printers |
+| --- | --- | --- |
+| PLA | All PLA hot | both |
+| PETG | Base PETG hot, Black PETG hot, White PETG hot | both |
+| PETG (hi-speed) | Hi-Speed PETG hot | Shaytan K2 only |
+| ABS | Black ABS hot, White ABS hot, Color ABS hot | both |
+| TPU | Black TPU hot, Black TPU soft hot | both |
+| SBS | Color SBS hot | both |
 
 Each preset is available for every nozzle size where a matching process profile exists.
 
@@ -78,27 +77,27 @@ Process presets define print quality profiles (layer height, speeds, supports, e
 
 ### Anette — Validation Status
 
-| Nozzle | PLA | PETG | ABS | TPU | Standard |
-| --- | --- | --- | --- | --- | --- |
-| 0.15 mm (Detail) | **validated** | pending | pending | — | — |
-| 0.25 mm (Detail) | pending | pending | pending | — | — |
-| 0.3 mm (Standard) | **validated** | **validated** | pending | — | — |
-| **0.4 mm** | **validated** | **validated** | **validated** | **validated** | **validated** |
-| 0.6 mm (Speed) | **validated** | **validated** | **validated** | pending | — |
-| 0.8 mm (Speed) | pending | pending | pending | pending | — |
-| 1.0 mm (Speed) | pending | pending | pending | — | — |
+**validated** = test-printed and confirmed. **extrapolated** = volumetric-flow scaling from validated 0.4 data, safe to print from but PA/flow ratio need per-nozzle calibration before production use. **pending** = no profile yet.
+
+| Nozzle | PLA | PETG | ABS | TPU |
+| --- | --- | --- | --- | --- |
+| 0.15 mm (Detail) | extrapolated | extrapolated | extrapolated | — |
+| 0.25 mm (Detail) | extrapolated | extrapolated | extrapolated | — |
+| 0.3 mm (Standard) | extrapolated | extrapolated | extrapolated | — |
+| **0.4 mm** | **validated** | **validated** | **validated** | **validated** |
+| 0.6 mm (Speed) | extrapolated | extrapolated | extrapolated | extrapolated |
+| 0.8 mm (Speed) | extrapolated | extrapolated | extrapolated | extrapolated |
 
 ### Shaytan K2 — Validation Status
 
-All K2 process presets are **baseline** — structural parameters (layer heights, support distances, wall counts) are derived from Anette's validated profiles. Print speeds have not yet been tuned for the K2 and will need manual adjustment after test prints.
+**validated** = test-printed and confirmed. **extrapolated** = volumetric-flow scaling from validated 0.4 data, safe to print from but PA/flow ratio need per-nozzle calibration before production use.
 
-| Nozzle | PLA | PETG | ABS | TPU | SBS | Standard |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0.2 mm (Detail) | baseline | baseline | baseline | — | — | — |
-| **0.4 mm** | baseline | baseline | baseline | baseline | baseline | baseline |
-| 0.6 mm (Speed) | baseline | baseline | baseline | baseline | — | — |
-| 0.8 mm (Speed) | baseline | baseline | baseline | baseline | — | — |
-| 1.0 mm (Speed) | baseline | baseline | baseline | — | — | — |
+| Nozzle | PLA | PETG | Hi-Speed PETG | ABS | TPU | SBS | Standard |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.2 mm (Detail) | extrapolated | extrapolated | — | extrapolated | — | — | — |
+| **0.4 mm** | **validated** | **validated** | **validated** | **validated** | extrapolated | extrapolated | extrapolated |
+| 0.6 mm (Speed) | extrapolated | extrapolated | — | extrapolated | extrapolated | — | — |
+| 0.8 mm (Speed) | extrapolated | extrapolated | — | extrapolated | extrapolated | — | — |
 
 ---
 

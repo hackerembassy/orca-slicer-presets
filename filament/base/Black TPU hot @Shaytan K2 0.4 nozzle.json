@@ -31,7 +31,6 @@
 	],
 	"compatible_printers_condition": "",
 	"compatible_prints": [
-		"Shaytan K2 Standard @ 0.4",
 		"Shaytan K2 TPU @ 0.4",
 		"Shaytan K2 TPU soft @ 0.4"
 	],

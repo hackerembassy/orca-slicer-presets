@@ -1,20 +1,32 @@
 #!/usr/bin/env python3
 """
-Regenerate all non-0.4 process profiles using volumetric-flow scaling.
+Regenerate all non-0.4 process profiles using validated volumetric-flow caps.
 
-Source of truth: validated 0.4 nozzle speed values.
-Formula: speed_N = flow_0.4 / (layer_N * width_N)
-Cap:     speed_N = min(speed_N, max_vflow_N / (layer_N * width_N))
+Source of truth:
+  - Speeds     : validated 0.4 nozzle process values (V04 dict below).
+  - Flow cap   : filament_max_volumetric_speed from the 0.4 nozzle filament
+                 profiles for each printer+material (min across all variants).
 
-Rounds all speeds to nearest integer mm/s.
-Only touches speed and geometry parameters; leaves structural settings alone.
+Formula: speed_N = min(speed_0.4, mvf_0.4 / (layer_N * width_N))
+
+This gives "as fast as the printer can move, limited by what the hotend
+can push". For large nozzles the flow cap is the binding constraint; for
+small nozzles the motion speed is the binding constraint.
+
+TPU speeds are floored at the validated 0.4 values since TPU is
+material-property-driven, not motion-limited.
+
+Layer heights set to 50 % of nozzle. Line widths scale proportionally
+at the same nozzle-to-width ratio as the validated 0.4 profile.
+Support distances scale with layer height using the same ratio as 0.4.
 """
 
-import json, os, math, copy
+import json, os, glob, math, copy
 
-BASE  = "/Users/edie/Library/Application Support/OrcaSlicer/user/default"
-PROC  = os.path.join(BASE, "process")
-FILB  = os.path.join(BASE, "filament", "base")
+BASE   = "/Users/edie/Library/Application Support/OrcaSlicer/user/default"
+PROC   = os.path.join(BASE, "process")
+FILB   = os.path.join(BASE, "filament", "base")
+FILR   = os.path.join(BASE, "filament")   # root (non-base variants)
 
 # ---------------------------------------------------------------------------
 # Geometry helpers
@@ -32,10 +44,7 @@ def sup_width(nz, ratio=1.05):
     return round(nz * ratio, 4)
 
 # ---------------------------------------------------------------------------
-# Validated 0.4 source data (outer_wall, inner_wall, sparse_infill,
-# top_surface, support, support_iface, initial_layer, initial_infill,
-# internal_solid, bridge, gap_infill)
-# Widths: outer_wall/inner_wall/top/infill, support
+# Validated 0.4 source data
 # ---------------------------------------------------------------------------
 # fmt: off
 V04 = {
@@ -97,60 +106,42 @@ V04 = {
 REF_LAYER = 0.20   # validated layer height for all 0.4 profiles
 
 # ---------------------------------------------------------------------------
-# Per-nozzle filament max volumetric speed caps (mm³/s)
-# Use most conservative value across all colour variants at each nozzle.
+# Read validated MVF from 0.4 filament profiles (min across all variants)
 # ---------------------------------------------------------------------------
-MAX_VF = {
-    ("anette", "ABS",  0.15): 2.5,
-    ("anette", "ABS",  0.25): 4.5,
-    ("anette", "ABS",  0.3):  6.5,
-    ("anette", "ABS",  0.6):  13.5,
-    ("anette", "ABS",  0.8):  20.0,
-    ("anette", "PETG", 0.15): 2.5,
-    ("anette", "PETG", 0.25): 4.5,
-    ("anette", "PETG", 0.3):  6.0,
-    ("anette", "PETG", 0.6):  13.0,
-    ("anette", "PETG", 0.8):  20.0,
-    ("anette", "PLA",  0.15): 2.5,
-    ("anette", "PLA",  0.25): 5.0,
-    ("anette", "PLA",  0.3):  7.0,
-    ("anette", "PLA",  0.6):  15.5,
-    ("anette", "PLA",  0.8):  22.0,
-    ("anette", "TPU",  0.6):  5.0,
-    ("anette", "TPU",  0.8):  7.0,
-    ("k2",     "ABS",  0.2):  4.5,
-    ("k2",     "ABS",  0.6):  13.5,
-    ("k2",     "ABS",  0.8):  20.0,
-    ("k2",     "PETG", 0.2):  4.5,
-    ("k2",     "PETG", 0.6):  13.0,
-    ("k2",     "PETG", 0.8):  20.0,
-    ("k2",     "PLA",  0.2):  5.0,
-    ("k2",     "PLA",  0.6):  15.5,
-    ("k2",     "PLA",  0.8):  22.0,
-    ("k2",     "TPU",  0.6):  5.0,
-    ("k2",     "TPU",  0.8):  7.0,
-}
+def get_validated_mvf(printer, material):
+    """
+    Read minimum filament_max_volumetric_speed from all 0.4 nozzle filament
+    profiles for this printer+material (base and root dirs, skip missing).
+    """
+    tag = "Shaytan K2" if printer == "k2" else "anette hackem"
+    vals = []
+    for search_dir in [FILB, FILR]:
+        pattern = os.path.join(search_dir, f"*{material}* @{tag} 0.4 nozzle.json")
+        for path in glob.glob(pattern):
+            with open(path) as f:
+                d = json.load(f)
+            raw = d.get("filament_max_volumetric_speed", [None])
+            if isinstance(raw, list):
+                raw = raw[0] if raw else None
+            if raw and str(raw) not in ("?", "nil", ""):
+                vals.append(float(raw))
+    if not vals:
+        raise KeyError(f"No filament MVF found for ({printer}, {material})")
+    return min(vals)
 
-def scale_speed(ref_speed, ref_layer, ref_width, tgt_layer, tgt_width, max_vf):
+# ---------------------------------------------------------------------------
+# Speed calculation
+# ---------------------------------------------------------------------------
+def scale_speed(ref_speed, tgt_layer, tgt_width, max_vf, floor=1):
     """
-    Return integer speed (mm/s) that maintains the reference volumetric flow,
-    capped by max_vf / (tgt_layer * tgt_width).
+    Return integer speed (mm/s): min(ref_speed, max_vf / (tgt_layer * tgt_width)).
+    Floors the result at `floor`.
     """
-    vol = ref_speed * ref_layer * ref_width
-    raw = vol / (tgt_layer * tgt_width)
     cap = max_vf / (tgt_layer * tgt_width)
-    return max(1, round(min(raw, cap)))
-
-def scale_or_keep(ref_speed, ref_layer, ref_width, tgt_layer, tgt_width, max_vf, keep_min=None):
-    s = scale_speed(ref_speed, ref_layer, ref_width, tgt_layer, tgt_width, max_vf)
-    if keep_min is not None:
-        s = max(s, keep_min)
-    return s
+    return max(floor, round(min(ref_speed, cap)))
 
 # ---------------------------------------------------------------------------
-# Target files: (printer_tag, material, nozzle, filename, name_in_json,
-#                printer_preset_in_json)
-# Only non-0.4 nozzles are processed (0.4 is the validated reference).
+# Target files
 # ---------------------------------------------------------------------------
 TARGETS = [
     # ---- Anette ----
@@ -197,54 +188,46 @@ TARGETS = [
 def build_updates(printer, material, nozzle):
     """Return a dict of JSON key→value updates for the target process file."""
     ref = V04[(printer, material)]
-    mvf = MAX_VF.get((printer, material, nozzle), None)
-    if mvf is None:
-        raise KeyError(f"No max_vflow entry for ({printer}, {material}, {nozzle})")
+    mvf = get_validated_mvf(printer, material)
 
-    lh   = layer_h(nozzle)
-    wid  = std_width(nozzle, ref["lw_pct"])
-    sw   = sup_width(nozzle, ref["sup_wid"] / 0.4)  # maintain same ratio as 0.4
+    lh  = layer_h(nozzle)
+    wid = std_width(nozzle, ref["lw_pct"])
+    sw  = sup_width(nozzle, ref["sup_wid"] / 0.4)
 
-    # For K2 PETG, infill/support width follows a different ratio
+    # Infill width
     if "inf_wid" in ref:
         inf_w = round(nozzle * (ref["inf_wid"] / 0.4), 4)
     else:
-        inf_w = sw  # same as support width
-
-    rl  = REF_LAYER
-    rw  = ref["wid"]       # reference outer/inner wall width at 0.4
+        inf_w = sw
 
     def sp(ref_spd, w=None):
-        return scale_speed(ref_spd, rl, rw, lh, w or wid, mvf)
+        return scale_speed(ref_spd, lh, w or wid, mvf)
 
-    # Infill uses its own width for flow calculation
     def sp_inf(ref_spd):
-        return scale_speed(ref_spd, rl, ref.get("inf_wid", rw), lh, inf_w, mvf)
+        return scale_speed(ref_spd, lh, inf_w, mvf)
 
-    # Support uses support line width
     def sp_sup(ref_spd):
-        return scale_speed(ref_spd, rl, ref["sup_wid"], lh, sw, mvf)
+        return scale_speed(ref_spd, lh, sw, mvf)
 
-    # Speed floors: prevent going slower than validated 0.4 for the same material.
-    # TPU is already very slow — maintain its 0.4 minimums across all nozzles.
-    ow_min  = ref["ow"]  if material == "TPU" else (1 if printer == "anette" else 1)
-    br_min  = 10
-    il_min  = ref["il"]  if material == "TPU" else (10 if printer == "anette" else 40)
-    ili_min = ref["ili"] if material == "TPU" else (10 if printer == "anette" else 40)
+    # TPU: floor at validated 0.4 speeds (material-property-driven limit)
+    is_tpu   = material == "TPU"
+    br_floor = 10
+    il_floor = ref["il"]  if is_tpu else (10 if printer == "anette" else 40)
+    ili_floor = ref["ili"] if is_tpu else (10 if printer == "anette" else 40)
+    gen_floor = ref["ow"] if is_tpu else 1
 
-    ow_spd   = max(ow_min, sp(ref["ow"]))
-    iw_spd   = max(ow_min, sp(ref["iw"]))
-    inf_spd  = max(ow_min, sp_inf(ref["inf"]))
-    top_spd  = max(ow_min, sp(ref["top"]))
-    sup_spd  = max(ow_min, sp_sup(ref["sup"]))
-    supi_spd = max(ow_min, sp_sup(ref["sup_i"]))
-    isol_spd = max(ow_min, sp_inf(ref["isol"]))
-    br_spd   = max(br_min, sp(ref["br"]))
-    gap_spd  = max(ow_min, sp(ref["gap"]))
-    il_spd   = max(il_min,  sp(ref["il"]))
-    ili_spd  = max(ili_min, sp(ref["ili"]))
+    ow_spd   = max(gen_floor, sp(ref["ow"]))
+    iw_spd   = max(gen_floor, sp(ref["iw"]))
+    inf_spd  = max(gen_floor, sp_inf(ref["inf"]))
+    top_spd  = max(gen_floor, sp(ref["top"]))
+    sup_spd  = max(gen_floor, sp_sup(ref["sup"]))
+    supi_spd = max(gen_floor, sp_sup(ref["sup_i"]))
+    isol_spd = max(gen_floor, sp_inf(ref["isol"]))
+    br_spd   = max(br_floor,  sp(ref["br"]))
+    gap_spd  = max(gen_floor, sp(ref["gap"]))
+    il_spd   = max(il_floor,  sp(ref["il"]))
+    ili_spd  = max(ili_floor, sp(ref["ili"]))
 
-    # Support distances scale with layer height using same ratio as 0.4
     sup_top_z = round(lh * ref["sup_top_ratio"], 2)
     sup_bot_z = round(lh * ref["sup_bot_ratio"], 2)
 
@@ -297,13 +280,9 @@ def process_target(printer, material, nozzle, filename, name, printer_preset):
     updates = build_updates(printer, material, nozzle)
     data.update(updates)
 
-    # Ensure name/settings_id/compatible_printers are correct
     data["name"] = name
     data["print_settings_id"] = name
     data["compatible_printers"] = [printer_preset]
-
-    # Remove internal_solid_infill_line_width "0" overrides that were in old files
-    # (they can stay if the file had them — leave them)
 
     with open(path, "w") as f:
         json.dump(data, f, indent="\t", ensure_ascii=False)
@@ -313,33 +292,41 @@ def process_target(printer, material, nozzle, filename, name, printer_preset):
 
 
 # ---------------------------------------------------------------------------
-# Print the computed values table before writing (dry-run display)
+# Dry-run table
 # ---------------------------------------------------------------------------
 def print_table():
-    header = f"{'file':<46} {'nz':>4} {'lh':>5} {'ow':>5} {'iw':>5} {'inf':>5} {'top':>5} {'il':>5} {'cap':>8}"
+    header = (
+        f"{'file':<46} {'nz':>4} {'lh':>5} {'mvf':>5} "
+        f"{'ow':>5} {'iw':>5} {'inf':>5} {'top':>5} {'il':>5} {'cap@nz':>8}"
+    )
     print(header)
     print("-" * len(header))
     for (printer, material, nozzle, filename, name, _) in TARGETS:
-        ref = V04[(printer, material)]
-        mvf = MAX_VF.get((printer, material, nozzle), "?")
-        lh  = layer_h(nozzle)
-        wid = std_width(nozzle, ref["lw_pct"])
-        ow  = scale_speed(ref["ow"], REF_LAYER, ref["wid"], lh, wid, mvf) if mvf != "?" else "?"
-        iw  = scale_speed(ref["iw"], REF_LAYER, ref["wid"], lh, wid, mvf) if mvf != "?" else "?"
-        inf = scale_speed(ref["inf"], REF_LAYER, ref.get("inf_wid", ref["wid"]), lh,
-                          round(nozzle * (ref.get("inf_wid", ref["wid"]) / 0.4), 4), mvf) if mvf != "?" else "?"
-        top = scale_speed(ref["top"], REF_LAYER, ref["wid"], lh, wid, mvf) if mvf != "?" else "?"
-        il  = max(10 if printer=="anette" else 40,
-                  scale_speed(ref["il"], REF_LAYER, ref["wid"], lh, wid, mvf)) if mvf != "?" else "?"
-        cap_spd = round(mvf / (lh * wid)) if mvf != "?" else "?"
-        print(f"  {filename:<44} {nozzle:>4.2f} {lh:>5.2f} {ow:>5} {iw:>5} {inf:>5} {top:>5} {il:>5}  cap={cap_spd}")
+        ref  = V04[(printer, material)]
+        mvf  = get_validated_mvf(printer, material)
+        lh   = layer_h(nozzle)
+        wid  = std_width(nozzle, ref["lw_pct"])
+        ow   = scale_speed(ref["ow"],  lh, wid, mvf)
+        iw   = scale_speed(ref["iw"],  lh, wid, mvf)
+        sw   = sup_width(nozzle, ref["sup_wid"] / 0.4)
+        inf_w = round(nozzle * (ref.get("inf_wid", ref["wid"]) / 0.4), 4)
+        inf  = scale_speed(ref["inf"], lh, inf_w, mvf)
+        top  = scale_speed(ref["top"], lh, wid, mvf)
+        il_f = ref["il"] if material == "TPU" else (10 if printer == "anette" else 40)
+        il   = max(il_f, scale_speed(ref["il"], lh, wid, mvf))
+        cap  = round(mvf / (lh * wid))
+        print(
+            f"  {filename:<44} {nozzle:>4.2f} {lh:>5.2f} {mvf:>5.1f} "
+            f"{ow:>5} {iw:>5} {inf:>5} {top:>5} {il:>5}  cap={cap}"
+        )
 
 
 if __name__ == "__main__":
     import sys
     dry = "--dry-run" in sys.argv
 
-    print("\n=== Volumetric-flow speed scaling ===\n")
+    print("\n=== Volumetric-flow speed scaling ===")
+    print("Formula: speed = min(speed_0.4, mvf_0.4_filament / (layer * width))\n")
     print_table()
 
     if dry:

@@ -82,14 +82,14 @@ V04 = {
     ),
     # K2 PETG uses 100% LW and explicit 0.42 infill width
     ("k2", "PETG"): dict(
-        ow=160, iw=240, inf=260, top=140, sup=130, sup_i=120, il=100, ili=140, isol=250, br=25, gap=200,
+        ow=160, iw=180, inf=240, top=140, sup=120, sup_i=100, il=130, ili=140, isol=210, br=25, gap=200,
         wid=0.40, sup_wid=0.42,   # 100% of nozzle for walls
         inf_wid=0.42,              # explicit infill/support width at 0.4 nozzle
         sup_top_ratio=1.5, sup_bot_ratio=1.5,
         sup_xy=0.8, lw_pct=1.0,
     ),
     ("k2", "PLA"):  dict(
-        ow=200, iw=250, inf=260, top=180, sup=125, sup_i=150, il=175, ili=185, isol=275, br=25, gap=275,
+        ow=200, iw=250, inf=260, top=180, sup=125, sup_i=150, il=150, ili=160, isol=275, br=25, gap=250,
         wid=0.45, sup_wid=0.42,
         sup_top_ratio=0.75, sup_bot_ratio=1.0,
         sup_xy=0.6, lw_pct=1.125,
@@ -191,10 +191,10 @@ TARGETS = [
 ]
 
 
-def build_updates(printer, material, nozzle):
+def build_updates(printer, material, nozzle, detail_factor=1.0):
     """Return a dict of JSON key→value updates for the target process file."""
     ref = V04[(printer, material)]
-    mvf = get_validated_mvf(printer, material)
+    mvf = get_validated_mvf(printer, material) * detail_factor
 
     lh  = layer_h(nozzle)
     rw  = ref["wid"]          # reference wall width at 0.4 nozzle
@@ -206,13 +206,13 @@ def build_updates(printer, material, nozzle):
     inf_w = round(nozzle * (inf_ref_w / 0.4), 4)
 
     def sp(ref_spd, w=None):
-        return scale_speed(ref_spd, REF_LAYER, rw, lh, w or wid, mvf)
+        return scale_speed(ref_spd * detail_factor, REF_LAYER, rw, lh, w or wid, mvf)
 
     def sp_inf(ref_spd):
-        return scale_speed(ref_spd, REF_LAYER, inf_ref_w, lh, inf_w, mvf)
+        return scale_speed(ref_spd * detail_factor, REF_LAYER, inf_ref_w, lh, inf_w, mvf)
 
     def sp_sup(ref_spd):
-        return scale_speed(ref_spd, REF_LAYER, ref["sup_wid"], lh, sw, mvf)
+        return scale_speed(ref_spd * detail_factor, REF_LAYER, ref["sup_wid"], lh, sw, mvf)
 
     # TPU: floor at validated 0.4 speeds (material-property-driven limit)
     is_tpu   = material == "TPU"
@@ -270,6 +270,10 @@ def build_updates(printer, material, nozzle):
         updates["top_surface_line_width"] = "0"
         updates["line_width"] = "100%"
 
+    # Detail profiles: write explicit MVF cap so OrcaSlicer enforces it in the UI
+    if detail_factor < 1.0:
+        updates["filament_max_volumetric_speed"] = [str(round(mvf, 1))]
+
     return updates
 
 
@@ -282,7 +286,8 @@ def process_target(printer, material, nozzle, filename, name, printer_preset):
     with open(path) as f:
         data = json.load(f)
 
-    updates = build_updates(printer, material, nozzle)
+    detail_factor = 0.5 if nozzle <= 0.25 else 1.0
+    updates = build_updates(printer, material, nozzle, detail_factor=detail_factor)
     data.update(updates)
 
     data["name"] = name
@@ -301,30 +306,32 @@ def process_target(printer, material, nozzle, filename, name, printer_preset):
 # ---------------------------------------------------------------------------
 def print_table():
     header = (
-        f"{'file':<46} {'nz':>4} {'lh':>5} {'mvf':>5} "
+        f"{'file':<46} {'nz':>4} {'lh':>5} {'eff_mvf':>7} "
         f"{'ow':>5} {'iw':>5} {'inf':>5} {'top':>5} {'il':>5} {'cap@nz':>8}"
     )
     print(header)
     print("-" * len(header))
     for (printer, material, nozzle, filename, name, _) in TARGETS:
-        ref  = V04[(printer, material)]
-        mvf  = get_validated_mvf(printer, material)
-        lh   = layer_h(nozzle)
-        wid  = std_width(nozzle, ref["lw_pct"])
-        ow   = scale_speed(ref["ow"],  REF_LAYER, ref["wid"], lh, wid, mvf)
-        iw   = scale_speed(ref["iw"],  REF_LAYER, ref["wid"], lh, wid, mvf)
-        sw   = sup_width(nozzle, ref["sup_wid"] / 0.4)
+        ref          = V04[(printer, material)]
+        raw_mvf      = get_validated_mvf(printer, material)
+        detail_factor = 0.5 if nozzle <= 0.25 else 1.0
+        mvf          = raw_mvf * detail_factor
+        lh           = layer_h(nozzle)
+        wid          = std_width(nozzle, ref["lw_pct"])
+        ow   = scale_speed(ref["ow"]  * detail_factor, REF_LAYER, ref["wid"], lh, wid, mvf)
+        iw   = scale_speed(ref["iw"]  * detail_factor, REF_LAYER, ref["wid"], lh, wid, mvf)
         inf_ref_w = ref.get("inf_wid", ref["wid"])
         inf_w = round(nozzle * (inf_ref_w / 0.4), 4)
-        inf  = scale_speed(ref["inf"], REF_LAYER, inf_ref_w, lh, inf_w, mvf)
-        top  = scale_speed(ref["top"], REF_LAYER, ref["wid"], lh, wid, mvf)
+        inf  = scale_speed(ref["inf"] * detail_factor, REF_LAYER, inf_ref_w, lh, inf_w, mvf)
+        top  = scale_speed(ref["top"] * detail_factor, REF_LAYER, ref["wid"], lh, wid, mvf)
         il_f = ref["il"] if material == "TPU" else (10 if printer == "anette" else 40)
-        il   = max(il_f, scale_speed(ref["il"], REF_LAYER, ref["wid"], lh, wid, mvf))
-        eff  = max(ref["iw"] * REF_LAYER * ref["wid"], mvf)
+        il   = max(il_f, scale_speed(ref["il"] * detail_factor, REF_LAYER, ref["wid"], lh, wid, mvf))
+        eff  = max(ref["iw"] * detail_factor * REF_LAYER * ref["wid"], mvf)
         cap  = round(eff / (lh * wid))
+        flag = " [detail]" if detail_factor < 1.0 else ""
         print(
-            f"  {filename:<44} {nozzle:>4.2f} {lh:>5.2f} {mvf:>5.1f} "
-            f"{ow:>5} {iw:>5} {inf:>5} {top:>5} {il:>5}  cap={cap}"
+            f"  {filename:<44} {nozzle:>4.2f} {lh:>5.2f} {mvf:>7.1f} "
+            f"{ow:>5} {iw:>5} {inf:>5} {top:>5} {il:>5}  cap={cap}{flag}"
         )
 
 

@@ -75,7 +75,7 @@
 	"fuzzy_skin_thickness": "0.2",
 	"gap_fill_flow_ratio": "1",
 	"gap_fill_target": "nowhere",
-	"gap_infill_speed": "275",
+	"gap_infill_speed": "250",
 	"gcode_add_line_number": "0",
 	"gcode_comments": "0",
 	"gcode_label_objects": "1",

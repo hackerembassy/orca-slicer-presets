@@ -4,3 +4,10 @@ backup.zip
 # Filament drafts/copies (not production presets)
 filament/Generic TPU @System - Copy.*
 filament/Generic TPU matte @annete.*
+
+# macOS metadata
+.DS_Store
+
+# Local-only configs and Python cache
+_local/
+scripts/__pycache__/

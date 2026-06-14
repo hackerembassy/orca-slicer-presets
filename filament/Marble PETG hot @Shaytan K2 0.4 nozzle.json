@@ -2,11 +2,11 @@
 	"filament_extruder_variant": [
 		"Direct Drive Standard"
 	],
+	"filament_max_volumetric_speed": [
+		"20"
+	],
 	"filament_settings_id": [
 		"Marble PETG hot @Shaytan K2 0.4 nozzle"
-	],
-	"filament_shrink": [
-		"100.2%"
 	],
 	"filament_vendor": [
 		"Marble"

@@ -1,4 +1,7 @@
 {
+	"compatible_printers": [
+		"Shaytan K2 @ 0.4"
+	],
 	"compatible_prints": [
 		"Shaytan K2 Hi-Speed PETG @ 0.4"
 	],

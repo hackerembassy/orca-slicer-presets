@@ -48,7 +48,7 @@
 		"60"
 	],
 	"default_filament_colour": [
-		"#FFBE6F"
+		"#FFFF0A"
 	],
 	"dont_slow_down_outer_wall": [
 		"0"
@@ -151,7 +151,7 @@
 		"nil"
 	],
 	"filament_max_volumetric_speed": [
-		"23"
+		"12"
 	],
 	"filament_minimal_purge_on_wipe_tower": [
 		"15"
@@ -205,7 +205,7 @@
 		"40"
 	],
 	"filament_settings_id": [
-		"Base PETG hot @Shaytan K2 0.4 nozzle"
+		"NIT Trans-Base PETG hot @Shaytan K2 0.4 nozzle"
 	],
 	"filament_shrink": [
 		"100.2%"
@@ -290,12 +290,12 @@
 	"long_retractions_when_ec": [
 		"0"
 	],
-	"name": "Base PETG hot @Shaytan K2 0.4 nozzle",
+	"name": "NIT Trans-Base PETG hot @Shaytan K2 0.4 nozzle",
 	"nozzle_temperature": [
-		"235"
+		"240"
 	],
 	"nozzle_temperature_initial_layer": [
-		"235"
+		"240"
 	],
 	"nozzle_temperature_range_high": [
 		"245"
@@ -313,7 +313,7 @@
 		"0.4157"
 	],
 	"pressure_advance": [
-		"0.07"
+		"0"
 	],
 	"reduce_fan_stop_start_freq": [
 		"1"

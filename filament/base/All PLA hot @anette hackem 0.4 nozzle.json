@@ -33,10 +33,12 @@
 		"1"
 	],
 	"compatible_printers": [
+		"Oda SV07 0.4 nozzle",
 		"anette hackem 0.4 nozzle"
 	],
 	"compatible_printers_condition": "",
 	"compatible_prints": [
+		"0.20mm Standard @Sovol SV07",
 		"PLA @ 0.4",
 		"Standard @ 0.4"
 	],

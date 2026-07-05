@@ -38,6 +38,7 @@
 	"compatible_printers_condition": "",
 	"compatible_prints": [
 		"Shaytan K2 PETG @ 0.4",
+		"Shaytan K2 PETG quality @ 0.4",
 		"Shaytan K2 Standard @ 0.4"
 	],
 	"compatible_prints_condition": "",

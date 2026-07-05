@@ -36,7 +36,10 @@
 		"Shaytan K2 @ 0.4"
 	],
 	"compatible_printers_condition": "",
-	"compatible_prints": [],
+	"compatible_prints": [
+		"Shaytan K2 PETG @ 0.4",
+		"Shaytan K2 PETG quality @ 0.4"
+	],
 	"compatible_prints_condition": "",
 	"complete_print_exhaust_fan_speed": [
 		"70"

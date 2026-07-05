@@ -38,20 +38,23 @@
 	"raft_first_layer_density": "55%",
 	"seam_position": "back",
 	"skirt_loops": "0",
-	"small_perimeter_threshold": "10",
+	"small_perimeter_threshold": "20",
 	"sparse_infill_acceleration": "4000",
 	"sparse_infill_density": "20%",
 	"sparse_infill_line_width": "0.45",
 	"sparse_infill_pattern": "rectilinear",
 	"sparse_infill_speed": "125",
 	"support_bottom_interface_spacing": "0.3",
-	"support_bottom_z_distance": "0.3",
+	"support_bottom_z_distance": "0.31",
+	"support_interface_bottom_layers": "-1",
+	"support_interface_pattern": "rectilinear",
 	"support_interface_spacing": "0.3",
 	"support_interface_speed": "90",
+	"support_interface_top_layers": "3",
 	"support_line_width": "0.42",
 	"support_speed": "90",
 	"support_style": "default",
-	"support_top_z_distance": "0.3",
+	"support_top_z_distance": "0.31",
 	"top_surface_acceleration": "1000",
 	"top_surface_jerk": "8",
 	"top_surface_line_width": "0.45",
@@ -60,9 +63,5 @@
 	"travel_jerk": "10",
 	"travel_speed": "250",
 	"version": "0.0.0.0",
-	"wall_loops": "4",
-	"compatible_printers": [
-		"anette hackem 0.4 nozzle"
-	],
-	"compatible_printers_condition": "nozzle_diameter[0] == 0.4"
+	"wall_loops": "4"
 }

@@ -1,24 +1,24 @@
 {
-	"compatible_printers": [
-		"Shaytan K2 @ 0.4"
+	"compatible_prints": [
+		"Shaytan K2 TPU @ 0.4"
 	],
-	"compatible_prints": [],
 	"fan_max_speed": [
 		"45"
 	],
 	"fan_min_speed": [
 		"10"
 	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
 	"filament_flow_ratio": [
 		"0.95"
 	],
-	"filament_id": "Bdbdf474",
 	"filament_settings_id": [
 		"Black TPU soft hot @Shaytan K2 0.4 nozzle"
 	],
 	"from": "User",
 	"inherits": "Black TPU hot @Shaytan K2 0.4 nozzle",
-	"is_custom_defined": "0",
 	"name": "Black TPU soft hot @Shaytan K2 0.4 nozzle",
 	"nozzle_temperature": [
 		"212"

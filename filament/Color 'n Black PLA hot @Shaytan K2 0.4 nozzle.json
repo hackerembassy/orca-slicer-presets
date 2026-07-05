@@ -1,4 +1,9 @@
 {
+	"compatible_prints": [
+		"Shaytan K2 PLA @ 0.4",
+		"Shaytan K2 PLA experimental @ 0.4",
+		"Shaytan K2 Standard @ 0.4"
+	],
 	"filament_extruder_variant": [
 		"Direct Drive Standard"
 	],
@@ -21,7 +26,10 @@
 		"0.045"
 	],
 	"textured_plate_temp": [
-		"50"
+		"60"
+	],
+	"textured_plate_temp_initial_layer": [
+		"60"
 	],
 	"version": "2.3.1.10"
 }

@@ -24,21 +24,23 @@
 		"0"
 	],
 	"additional_cooling_fan_speed": [
-		"0"
+		"70"
 	],
 	"chamber_temperature": [
 		"0"
 	],
 	"close_fan_the_first_x_layers": [
-		"3"
+		"1"
 	],
 	"compatible_printers": [
-		"Shaytan K2 @ 0.4"
+		"Shaytan K2 @ 0.4",
+		"anette hackem 0.4 nozzle"
 	],
 	"compatible_printers_condition": "",
 	"compatible_prints": [
-		"Shaytan K2 PETG @ 0.4",
-		"Shaytan K2 PETG quality @ 0.4",
+		"Shaytan K2 PLA @ 0.4",
+		"Shaytan K2 PLA-SILK @ 0.4",
+		"Shaytan K2 PLA-SILK draft @ 0.4",
 		"Shaytan K2 Standard @ 0.4"
 	],
 	"compatible_prints_condition": "",
@@ -46,13 +48,13 @@
 		"70"
 	],
 	"cool_plate_temp": [
-		"60"
+		"35"
 	],
 	"cool_plate_temp_initial_layer": [
-		"60"
+		"35"
 	],
 	"default_filament_colour": [
-		"#000000"
+		"#8FF0A4"
 	],
 	"dont_slow_down_outer_wall": [
 		"0"
@@ -73,13 +75,13 @@
 		"0"
 	],
 	"fan_cooling_layer_time": [
-		"12"
+		"15"
 	],
 	"fan_max_speed": [
-		"40"
+		"100"
 	],
 	"fan_min_speed": [
-		"20"
+		"80"
 	],
 	"filament_adaptive_volumetric_speed": [
 		"0"
@@ -106,7 +108,7 @@
 		"7000"
 	],
 	"filament_density": [
-		"1.27"
+		"1.24"
 	],
 	"filament_deretraction_speed": [
 		"40"
@@ -121,7 +123,7 @@
 		"Direct Drive Standard"
 	],
 	"filament_flow_ratio": [
-		"0.99"
+		"1"
 	],
 	"filament_flush_temp": [
 		"0"
@@ -129,7 +131,7 @@
 	"filament_flush_volumetric_speed": [
 		"0"
 	],
-	"filament_id": "Ib8b9f37",
+	"filament_id": "N55ff1b5",
 	"filament_ironing_flow": [
 		"nil"
 	],
@@ -155,7 +157,7 @@
 		"nil"
 	],
 	"filament_max_volumetric_speed": [
-		"23"
+		"25"
 	],
 	"filament_minimal_purge_on_wipe_tower": [
 		"15"
@@ -200,7 +202,7 @@
 		"nil"
 	],
 	"filament_retraction_length": [
-		"0.4"
+		"0.8"
 	],
 	"filament_retraction_minimum_travel": [
 		"nil"
@@ -209,10 +211,10 @@
 		"40"
 	],
 	"filament_settings_id": [
-		"Black PETG hot @Shaytan K2 0.4 nozzle"
+		"All PLA-SILK hot @Shaytan K2 0.4 nozzle"
 	],
 	"filament_shrink": [
-		"100.2%"
+		"100%"
 	],
 	"filament_shrinkage_compensation_z": [
 		"100%"
@@ -248,7 +250,7 @@
 		"4"
 	],
 	"filament_type": [
-		"PETG"
+		"PLA"
 	],
 	"filament_unloading_speed": [
 		"90"
@@ -257,7 +259,7 @@
 		"100"
 	],
 	"filament_vendor": [
-		"Black"
+		"All"
 	],
 	"filament_wipe": [
 		"nil"
@@ -276,10 +278,10 @@
 		"0"
 	],
 	"hot_plate_temp": [
-		"80"
+		"60"
 	],
 	"hot_plate_temp_initial_layer": [
-		"85"
+		"65"
 	],
 	"idle_temperature": [
 		"0"
@@ -294,30 +296,30 @@
 	"long_retractions_when_ec": [
 		"0"
 	],
-	"name": "Black PETG hot @Shaytan K2 0.4 nozzle",
+	"name": "All PLA-SILK hot @Shaytan K2 0.4 nozzle",
 	"nozzle_temperature": [
-		"232"
+		"225"
 	],
 	"nozzle_temperature_initial_layer": [
-		"237"
+		"225"
 	],
 	"nozzle_temperature_range_high": [
-		"245"
-	],
-	"nozzle_temperature_range_low": [
 		"220"
 	],
+	"nozzle_temperature_range_low": [
+		"190"
+	],
 	"overhang_fan_speed": [
-		"70"
+		"100"
 	],
 	"overhang_fan_threshold": [
-		"95%"
+		"50%"
 	],
 	"pellet_flow_coefficient": [
 		"0.4157"
 	],
 	"pressure_advance": [
-		"0.07"
+		"0.03"
 	],
 	"reduce_fan_stop_start_freq": [
 		"1"
@@ -332,22 +334,22 @@
 		"1"
 	],
 	"slow_down_layer_time": [
-		"8"
+		"10"
 	],
 	"slow_down_min_speed": [
 		"10"
 	],
 	"supertack_plate_temp": [
-		"70"
+		"45"
 	],
 	"supertack_plate_temp_initial_layer": [
-		"70"
+		"45"
 	],
 	"support_material_interface_fan_speed": [
 		"-1"
 	],
 	"temperature_vitrification": [
-		"70"
+		"45"
 	],
 	"textured_cool_plate_temp": [
 		"40"
@@ -356,10 +358,10 @@
 		"40"
 	],
 	"textured_plate_temp": [
-		"70"
+		"60"
 	],
 	"textured_plate_temp_initial_layer": [
-		"70"
+		"60"
 	],
 	"version": "2.3.1.10",
 	"volumetric_speed_coefficients": [

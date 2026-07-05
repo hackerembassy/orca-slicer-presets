@@ -1,0 +1,30 @@
+{
+	"enable_support": "0",
+	"compatible_printers": [
+		"Shaytan K2 @ 0.4"
+	],
+	"compatible_printers_condition": "",
+	"from": "User",
+	"inherits": "Shaytan K2 PLA @ 0.4",
+	"initial_layer_infill_speed": "80",
+	"initial_layer_speed": "90",
+	"inner_wall_speed": "120",
+	"internal_solid_infill_speed": "100",
+	"line_width": "100%",
+	"name": "Shaytan K2 PLA experimental @ 0.4",
+	"outer_wall_speed": "90",
+	"print_extruder_id": [
+		"1"
+	],
+	"print_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"print_settings_id": "Shaytan K2 PLA experimental @ 0.4",
+	"small_perimeter_speed": "75%",
+	"small_perimeter_threshold": "20",
+	"sparse_infill_density": "15%",
+	"sparse_infill_speed": "150",
+	"top_surface_speed": "90",
+	"version": "0.0.0.0",
+	"wall_loops": "2"
+}

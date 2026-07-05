@@ -1,0 +1,36 @@
+{
+	"brim_type": "no_brim",
+	"enable_overhang_speed": "0",
+	"enable_support": "0",
+	"compatible_printers": [
+		"Shaytan K2 @ 0.4"
+	],
+	"compatible_printers_condition": "",
+	"from": "User",
+	"inherits": "Shaytan K2 PLA @ 0.4",
+	"initial_layer_infill_speed": "80",
+	"initial_layer_speed": "50",
+	"inner_wall_line_width": "0.42",
+	"inner_wall_speed": "80",
+	"internal_solid_infill_speed": "120",
+	"name": "Shaytan K2 PLA-SILK draft @ 0.4",
+	"outer_wall_line_width": "0.42",
+	"outer_wall_speed": "40",
+	"print_extruder_id": [
+		"1"
+	],
+	"print_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"print_settings_id": "Shaytan K2 PLA-SILK draft @ 0.4",
+	"seam_slope_type": "external",
+	"small_perimeter_threshold": "0",
+	"sparse_infill_density": "12.5%",
+	"sparse_infill_line_width": "0.42",
+	"sparse_infill_speed": "150",
+	"support_interface_speed": "110",
+	"top_surface_line_width": "0.42",
+	"top_surface_speed": "40",
+	"version": "0.0.0.0",
+	"wall_loops": "3"
+}

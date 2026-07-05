@@ -1,0 +1,31 @@
+{
+	"compatible_printers": [
+		"Shaytan K2 @ 0.4"
+	],
+	"compatible_printers_condition": "",
+	"from": "User",
+	"inherits": "Shaytan K2 PLA @ 0.4",
+	"initial_layer_infill_speed": "150",
+	"initial_layer_speed": "175",
+	"internal_solid_infill_speed": "175",
+	"ironing_flow": "14%",
+	"ironing_pattern": "concentric",
+	"ironing_spacing": "0.09",
+	"ironing_speed": "17.5",
+	"name": "Shaytan K2 PLA - experimental @ 0.4",
+	"outer_wall_speed": "140",
+	"print_extruder_id": [
+		"1"
+	],
+	"print_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"print_settings_id": "Shaytan K2 PLA - experimental @ 0.4",
+	"seam_slope_type": "external",
+	"small_perimeter_speed": "50%",
+	"small_perimeter_threshold": "20",
+	"sparse_infill_density": "10%",
+	"sparse_infill_speed": "190",
+	"top_surface_speed": "150",
+	"version": "0.0.0.0"
+}

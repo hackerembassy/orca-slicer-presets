@@ -1,16 +1,7 @@
 {
 	"from": "User",
 	"inherits": "anette hackem",
-	"max_layer_height": [
-		"0.45"
-	],
-	"min_layer_height": [
-		"0.1"
-	],
 	"name": "anette hackem 0.4 nozzle",
-	"nozzle_diameter": [
-		"0.4"
-	],
 	"printer_extruder_id": [
 		"1"
 	],
@@ -18,6 +9,5 @@
 		"Direct Drive Standard"
 	],
 	"printer_settings_id": "anette hackem 0.4 nozzle",
-	"printer_variant": "0.4",
 	"version": "2.3.0.3"
 }

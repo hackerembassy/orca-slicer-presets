@@ -1,0 +1,21 @@
+{
+	"default_filament_colour": [
+		"#FFFFFF"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_settings_id": [
+		"Oda White PLA @ 0.4"
+	],
+	"from": "User",
+	"inherits": "Oda Color PLA @ 0.4",
+	"name": "Oda White PLA @ 0.4",
+	"nozzle_temperature": [
+		"220"
+	],
+	"nozzle_temperature_initial_layer": [
+		"220"
+	],
+	"version": "2.3.2.60"
+}

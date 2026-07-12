@@ -1,7 +1,7 @@
 # Orca Slicer Presets
 
-OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.cc/):
-**Anette** and **Shaytan** (Creality K2).
+OrcaSlicer presets for **three FDM printers** at [Hacker Embassy](https://hackem.cc/):
+**Anette**, **Shaytan** (Creality K2), and **Oda** (Sovol SV07).
 
 ---
 
@@ -54,18 +54,42 @@ OrcaSlicer presets for **two FDM printers** at [Hacker Embassy](https://hackem.c
 
 ---
 
+### Oda (Sovol SV07)
+
+| Field | Value |
+| --- | --- |
+| **Name** | Oda |
+| **Model** | Sovol SV07 |
+| **Type** | FDM — i3 cartesian |
+| **Build volume** | 220 × 220 × 250 mm |
+| **Firmware** | Klipper |
+
+#### Nozzle sizes
+
+| Preset name | Nozzle | Notes |
+| --- | --- | --- |
+| Oda SV07 0.4 nozzle | **0.4 mm** | Standard — default, validated |
+| — | 0.2 mm | Nozzle on order — no profile yet |
+| — | 0.6 mm | Nozzle on order — no profile yet |
+| — | 0.8 mm | Nozzle on order — no profile yet |
+
+---
+
 ## Filament Presets
 
-Filament presets are shared across both printers for nozzle sizes they have in common.
+Filament presets are shared across printers for nozzle sizes they have in common.
 
 | Material | Variants | Printers |
 | --- | --- | --- |
-| PLA | All PLA hot | both |
-| PETG | Base PETG hot, Black PETG hot, White PETG hot | both |
-| PETG (hi-speed) | Hi-Speed PETG hot | Shaytan K2 only |
-| ABS | Black ABS hot, White ABS hot, Color ABS hot | both |
-| TPU | Black TPU hot, Black TPU soft hot | both |
-| SBS | Color SBS hot | both |
+| PLA | All PLA hot | Anette, Shaytan |
+| PETG | Base PETG hot, Black PETG hot, White PETG hot | Anette, Shaytan |
+| ABS | Black ABS hot, White ABS hot, Color ABS hot | Anette, Shaytan |
+| TPU | Black TPU hot | Anette, Shaytan |
+| SBS | Color SBS hot | Anette, Shaytan |
+| PLA (Color) | Oda Color PLA | Oda |
+| PLA (White) | Oda White PLA | Oda |
+| PLA (Silk) | Oda Color Silk-PLA | Oda |
+| PETG (Trans) | Trans PETG (NIT) | Oda |
 
 Each preset is available for every nozzle size where a matching process profile exists.
 
@@ -98,6 +122,17 @@ Process presets define print quality profiles (layer height, speeds, supports, e
 | **0.4 mm** | **validated** | **validated** | **validated** | **validated** | extrapolated | extrapolated | extrapolated |
 | 0.6 mm (Speed) | extrapolated | extrapolated | — | extrapolated | extrapolated | — | — |
 | 0.8 mm (Speed) | extrapolated | extrapolated | — | extrapolated | extrapolated | — | — |
+
+### Oda (Sovol SV07) — Validation Status
+
+**validated** = test-printed and confirmed. **—** = nozzle on order, no profile yet.
+
+| Nozzle | PLA | PLA (Silk) | PETG (Trans) |
+| --- | --- | --- | --- |
+| 0.2 mm (Detail) | — | — | — |
+| **0.4 mm** | **validated** | **validated** | **validated** |
+| 0.6 mm (Speed) | — | — | — |
+| 0.8 mm (Speed) | — | — | — |
 
 ---
 

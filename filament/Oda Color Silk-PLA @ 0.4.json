@@ -1,0 +1,28 @@
+{
+	"compatible_prints": [
+		"Oda PLA 0.2 (0.4)",
+		"Oda Silk-PLA 0.2 (0.4)"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_max_volumetric_speed": [
+		"14"
+	],
+	"filament_settings_id": [
+		"Oda Color Silk-PLA @ 0.4"
+	],
+	"filament_vendor": [
+		"Kingroon"
+	],
+	"from": "User",
+	"inherits": "Oda Color PLA @ 0.4",
+	"name": "Oda Color Silk-PLA @ 0.4",
+	"nozzle_temperature": [
+		"220"
+	],
+	"nozzle_temperature_initial_layer": [
+		"220"
+	],
+	"version": "2.3.2.60"
+}

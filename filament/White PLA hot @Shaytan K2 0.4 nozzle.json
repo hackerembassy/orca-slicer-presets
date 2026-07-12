@@ -1,0 +1,36 @@
+{
+	"default_filament_colour": [
+		"#FFFFFF"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_flow_ratio": [
+		"0.97"
+	],
+	"filament_max_volumetric_speed": [
+		"25"
+	],
+	"filament_retraction_length": [
+		"0.6"
+	],
+	"filament_settings_id": [
+		"White PLA hot @Shaytan K2 0.4 nozzle"
+	],
+	"filament_shrink": [
+		"100.2%"
+	],
+	"from": "User",
+	"inherits": "All PLA hot @Shaytan K2 0.4 nozzle",
+	"name": "White PLA hot @Shaytan K2 0.4 nozzle",
+	"nozzle_temperature": [
+		"215"
+	],
+	"nozzle_temperature_initial_layer": [
+		"220"
+	],
+	"pressure_advance": [
+		"0.045"
+	],
+	"version": "2.3.1.10"
+}

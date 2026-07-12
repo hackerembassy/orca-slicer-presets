@@ -1,0 +1,27 @@
+{
+	"default_filament_colour": [
+		"#FFFFFF"
+	],
+	"filament_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"filament_flow_ratio": [
+		"0.96"
+	],
+	"filament_settings_id": [
+		"White PLA hot @anette hackem 0.4 nozzle"
+	],
+	"filament_shrink": [
+		"100.05%"
+	],
+	"from": "User",
+	"inherits": "All PLA hot @anette hackem 0.4 nozzle",
+	"name": "White PLA hot @anette hackem 0.4 nozzle",
+	"nozzle_temperature": [
+		"215"
+	],
+	"nozzle_temperature_initial_layer": [
+		"220"
+	],
+	"version": "2.3.1.10"
+}
